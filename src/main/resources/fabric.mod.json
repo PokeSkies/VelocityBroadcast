@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "velocitybroadcast",
+  "version": "${version}",
+  "name": "VelocityBroadcast",
+  "description": "Template mod for PokeSkies",
+  "authors": [
+    "AmoAster",
+    "Stampede"
+  ],
+  "entrypoints": {
+    "main": [
+      "com.pokeskies.velocitybroadcast.VelocityBroadcast"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": ">=1.21.1"
+  },
+  "mixins": ["velocitybroadcast.mixins.json"],
+  "accessWidener": "velocitybroadcast.accesswidener"
+}
