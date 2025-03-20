@@ -20,14 +20,19 @@ object BroadcastManager {
             if (channel == "GetServers") {
                 val serversList = inputStream.readUTF()
                 Utils.printDebug("Received servers list: $serversList (currentBroadcast is $currentBroadcast)")
-                currentBroadcast?.requestPlayers(serversList.split(","))
+                currentBroadcast?.requestPlayers(
+                    if (serversList.contains(","))
+                        serversList.replace(" ", "").split(",")
+                    else
+                        listOf(serversList)
+                )
             } else if (channel == "PlayerList") {
                 val server = inputStream.readUTF()
                 val playerList = inputStream.readUTF()
                 Utils.printDebug("Received players list: $playerList (currentBroadcast is $currentBroadcast)")
                 currentBroadcast?.sendServerBroadcast(server,
                     if (playerList.contains(","))
-                        playerList.split(",")
+                        playerList.replace(" ", "").split(",")
                     else
                         listOf(playerList)
                 )
